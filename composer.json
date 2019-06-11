@@ -1,0 +1,25 @@
+{
+    "name": "wizjo/postinstall-m2",
+    "description": "",
+    "license": "proprietary",
+    "authors": [
+        {
+            "name": "Piotr Rzeczkowski",
+            "email": "piotr@wizjostudio.pl"
+        },
+        {
+            "name": "Łukasz Wojciechowski",
+            "email": "lukasz@wizjostudio.pl"
+        }
+    ],
+    "minimum-stability": "dev",
+    "require": {
+        "symfony/console": "~3.4|~4.0"
+    },
+    "autoload": {
+        "psr-4": {
+            "Wizjo\\Postinstall\\": ""
+        }
+    },
+    "bin": ["bin/wizjo-postinstall-m2"]
+}

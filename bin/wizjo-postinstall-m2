@@ -1,0 +1,22 @@
+#!/usr/bin/env php
+<?php
+$autoload = [
+    getcwd() . '/vendor/autoload.php',
+    __DIR__ . '/../../../autoload.php',
+];
+
+foreach ($autoload as $file) {
+    if (file_exists($file)) {
+        require_once $file;
+        break;
+    }
+}
+
+$application = new \Wizjo\Postinstall\App('Wizjo Postinstall M2', '1.0.0');
+
+$application->addCommands([
+    new \Wizjo\Postinstall\Console\Command\SetupInit(),
+    new \Wizjo\Postinstall\Console\Command\SetupRedis(),
+]);
+
+$application->run();
