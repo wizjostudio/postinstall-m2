@@ -9,6 +9,9 @@ use Symfony\Component\Console\Question\Question;
 
 abstract class SetupAbstract extends Command
 {
+    public const COMMAND_TYPE_SYSTEM = 'system';
+    public const COMMAND_TYPE_MAGENTO = 'magento';
+
     private $requiredOptions = [];
     private $skippableOptions = [];
 
@@ -77,10 +80,34 @@ abstract class SetupAbstract extends Command
                 }
             }
 
+            if (!array_key_exists('type', $command)) {
+                $command['type'] = self::COMMAND_TYPE_MAGENTO;
+                trigger_error(
+                    sprintf(
+                        'Command without defined type is deprecated. Use %s as default type',
+                        self::COMMAND_TYPE_MAGENTO
+                    ),
+                    E_USER_DEPRECATED
+                );
+            }
+
+            switch ($command['type']) {
+                case self::COMMAND_TYPE_SYSTEM:
+                    $commandStr = $command['command'];
+                    break;
+                case self::COMMAND_TYPE_MAGENTO:
+                default:
+                    $commandStr = sprintf(
+                        '%s/bin/magento %s',
+                        $magento,
+                        $command['command']
+                    );
+                    break;
+            }
+
             $outputCommands[]= sprintf(
-                '%s/bin/magento %s %s %s',
-                $magento,
-                $command['command'],
+                '%s %s %s',
+                $commandStr,
                 implode(' ', $options),
                 implode(' ', $args)
             );

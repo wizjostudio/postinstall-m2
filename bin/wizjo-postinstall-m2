@@ -12,11 +12,12 @@ foreach ($autoload as $file) {
     }
 }
 
-$application = new \Wizjo\Postinstall\App('Wizjo Postinstall M2', '1.0.0');
+$application = new \Wizjo\Postinstall\App('Wizjo Postinstall M2', '1.1.0');
 
 $application->addCommands([
     new \Wizjo\Postinstall\Console\Command\SetupInit(),
     new \Wizjo\Postinstall\Console\Command\SetupRedis(),
+    new \Wizjo\Postinstall\Console\Command\Refresh(),
 ]);
 
 $application->run();
