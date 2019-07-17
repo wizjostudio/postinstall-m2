@@ -62,6 +62,8 @@ class SetupInit extends SetupAbstract
         $commands = [];
 
         if (!$input->getOption('skip-setup')) {
+            $initParams = sprintf('MAGE_MODE=%s', $input->getOption('dev') ? 'development' : 'default');
+
             //initial setup
             $commands[] = [
                 'command' => 'setup:install',
@@ -78,6 +80,8 @@ class SetupInit extends SetupAbstract
                     '--admin-password' => $input->getOption('admin-password'),
 
                     '--backend-frontname' => $input->getOption('admin-path'),
+
+                    '--magento-init-params' => $initParams,
                 ]
             ];
         }
@@ -118,15 +122,6 @@ class SetupInit extends SetupAbstract
                     $option,
                     $value,
                 ],
-            ];
-        }
-
-        if ($input->getOption('dev')) {
-            $commands[] = [
-                'command' => 'deploy:mode:set',
-                'args' => [
-                    'developer'
-                ]
             ];
         }
 
