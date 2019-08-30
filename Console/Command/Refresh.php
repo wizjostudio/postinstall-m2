@@ -39,8 +39,7 @@ class Refresh extends SetupAbstract
             if (file_exists($path) && is_dir($path)) {
                 $commands[] = [
                     'command' => 'rm',
-                    'options' => ['-rf'],
-                    'args' => [$path],
+                    'args' => ['-rf', $path],
                     'type' => self::COMMAND_TYPE_SYSTEM,
                 ];
             }
