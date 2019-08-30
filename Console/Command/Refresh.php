@@ -26,6 +26,7 @@ class Refresh extends SetupAbstract
         $composerCommand = [
             'command' => 'composer',
             'args' => ['dump-autoload'],
+            'type' => self::COMMAND_TYPE_SYSTEM,
         ];
 
         foreach (['code', 'metadata'] as $subdir) {
