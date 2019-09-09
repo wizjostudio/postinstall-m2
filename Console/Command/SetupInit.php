@@ -82,7 +82,8 @@ class SetupInit extends SetupAbstract
                     '--backend-frontname' => $input->getOption('admin-path'),
 
                     '--magento-init-params' => $initParams,
-                ]
+                ],
+                'type' => self::COMMAND_TYPE_MAGENTO,
             ];
         }
 
@@ -122,16 +123,26 @@ class SetupInit extends SetupAbstract
                     $option,
                     $value,
                 ],
+                'type' => self::COMMAND_TYPE_MAGENTO,
             ];
         }
 
-        $commands[] = ['command' => 'setup:upgrade'];
+        $commands[] = [
+            'command' => 'setup:upgrade',
+            'type' => self::COMMAND_TYPE_MAGENTO,
+        ];
 
         if ($input->getOption('no-cache-disable')) {
-            $commands[] = ['command' => 'cache:disable'];
+            $commands[] = [
+                'command' => 'cache:disable',
+                'type' => self::COMMAND_TYPE_MAGENTO,
+            ];
         }
 
-        $commands[] = ['command' => 'index:reindex'];
+        $commands[] = [
+            'command' => 'index:reindex',
+            'type' => self::COMMAND_TYPE_MAGENTO,
+        ];
         $this->printCommandLine($input, $output, $commands);
     }
 }

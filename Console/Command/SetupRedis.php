@@ -55,7 +55,8 @@ class SetupRedis extends SetupAbstract
         $commands = [
             [
                 'command' => 'setup:config:set',
-                'options' => $options
+                'options' => $options,
+                'type' => self::COMMAND_TYPE_MAGENTO,
             ]
         ];
 
