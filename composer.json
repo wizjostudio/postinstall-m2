@@ -1,6 +1,6 @@
 {
     "name": "wizjo/postinstall-m2",
-    "description": "",
+    "description": "Postinstall dev scripts for Magento 2",
     "license": "MIT",
     "authors": [
         {
