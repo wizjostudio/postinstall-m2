@@ -1,7 +1,7 @@
 {
     "name": "wizjo/postinstall-m2",
     "description": "",
-    "license": "proprietary",
+    "license": "MIT",
     "authors": [
         {
             "name": "Piotr Rzeczkowski",
@@ -14,6 +14,7 @@
     ],
     "minimum-stability": "dev",
     "require": {
+        "php": "^7.2",
         "symfony/console": "~3.4|~4.0"
     },
     "autoload": {
